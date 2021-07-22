@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Furniture | Inventory System</title>
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/style/main.css}" />
+
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0 p-3" href="#"
+        >Inventory System</a
+      >
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#">Sign out</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- dashboard -->
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="" class="nav-link"> Dashboard </a>
+              </li>
+              <!-- computer -->
+              <li class="nav-item">
+                   <a class="nav-link" th:href="@{/}">
+                  <span data-feather="monitor"></span>
+                  Computer Device
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="home"></span>
+                  Furniture
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="truck"></span>
+                  Vehicle
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div
+            class="
+              ml-3
+              d-flex
+              justify-content-between
+              flex-wrap flex-md-nowrap
+              align-items-center
+              pt-2
+              mb-3
+              border-bottom
+            "
+          >
+            <h1 class="h1 pt-3">Update Furniture</h1>
+          </div>
+
+          <div class="container">
+             <form action="#" th:action="@{/SaveFurniture}" th:object="${furniture}" method="POST">
+              <input type="hidden" th:field="*{id}"/>
+              <label for="category">Furniture Category</label>
+              <input
+                type="text"
+                th:field="*{furncate}"
+                placeholder=""
+                class="form-control mb-4 col-4"
+              />
+
+              <label for="category">Furniture Brand</label>
+              <input
+                type="text"
+                th:field="*{furnbrand}"
+                placeholder=""
+                class="form-control mb-4 col-4"
+              />
+              <label for="category">Furniture Model / Type</label>
+              <input
+                type="text"
+                th:field="*{furnmodel}"
+                placeholder=""
+                class="form-control mb-4 col-4"
+              />
+              <div class="form-group">
+                <label for="desc">Furniture Specification :</label>
+                <textarea
+                th:field="*{furnspecs}"
+                  name="desc"
+                  id="desc"
+                  class="form-control"
+                  rows="3"
+                  style="width: 350px"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-warning col-4 mb-4">Update</button>
+              <br>
+              <a th:href="@{/FurniturePage}">
+               <span data-feather="arrow-left-circle"></span>  Back to Furniture List </a>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>
